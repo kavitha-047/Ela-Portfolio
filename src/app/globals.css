@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-cyan: #06b6d4;
+  --color-brand-cyan-dark: #0891b2;
+  --color-dark-bg: #07070b;
+  --color-dark-surface: #101119;
+  --color-dark-border: rgba(255, 255, 255, 0.06);
+  --color-light-bg: #f8fafc;
+  --color-light-surface: #ffffff;
+  --color-light-border: rgba(0, 0, 0, 0.06);
+
+  --font-sans: var(--font-geist-sans), Inter, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
 :root {
   --background: #f8fafc;
   --foreground: #0f172a;
@@ -16,4 +30,75 @@
   --card-bg: rgba(16, 17, 25, 0.65);
   --card-border: rgba(255, 255, 255, 0.06);
   --grid-color: rgba(6, 182, 212, 0.03);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism card utility */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(6, 182, 212, 0.3);
+  box-shadow: 0 10px 40px rgba(6, 182, 212, 0.04);
+}
+
+/* Tabular numerals for stats */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Subtle dashboard background grid */
+.grid-bg {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 182, 212, 0.5);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Grid drawing animation helper */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.timeline-line {
+  background: linear-gradient(to bottom, var(--color-brand-cyan) 0%, transparent 100%);
 }
