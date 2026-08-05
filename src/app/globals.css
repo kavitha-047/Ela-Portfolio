@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --border: rgba(0, 0, 0, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-border: rgba(0, 0, 0, 0.06);
+  --grid-color: rgba(148, 163, 184, 0.05);
+}
+
+.dark {
+  --background: #07070b;
+  --foreground: #f1f5f9;
+  --border: rgba(255, 255, 255, 0.08);
+  --card-bg: rgba(16, 17, 25, 0.65);
+  --card-border: rgba(255, 255, 255, 0.06);
+  --grid-color: rgba(6, 182, 212, 0.03);
+}
