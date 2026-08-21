@@ -103,7 +103,7 @@ export default function Hero() {
               <div className="relative glass-card p-2.5 rounded-2xl overflow-hidden shadow-2xl border border-border bg-card-bg/50 max-w-[280px] sm:max-w-[320px] md:max-w-[340px] z-10 transition-all duration-300">
                 <div className="relative rounded-xl overflow-hidden bg-muted/20">
                   <Image
-                    src="/assets/profile.jpg"
+                    src="/assets/images/profile.jpg"
                     width={792}
                     height={1024}
                     alt="Elamathi N - Data Analyst"
