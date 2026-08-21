@@ -1,35 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { ArrowRight, Download, Eye, Terminal } from "lucide-react";
+import React from "react";
+import { ArrowRight, Download } from "lucide-react";
 import { candidateData } from "@/lib/data";
+import Image from "next/image";
 
 export default function Hero() {
-  const [metrics, setMetrics] = useState({ projects: 0, internships: 0, certifications: 0 });
-
-  useEffect(() => {
-    // A clean, low-overhead animation of KPI numbers on load
-    const duration = 1000;
-    const steps = 30;
-    const stepTime = duration / steps;
-    let step = 0;
-
-    const timer = setInterval(() => {
-      step++;
-      const progress = step / steps;
-      setMetrics({
-        projects: Math.min(Math.round(progress * candidateData.projects.length), candidateData.projects.length),
-        internships: Math.min(Math.round(progress * candidateData.experience.length), candidateData.experience.length),
-        certifications: Math.min(Math.round(progress * candidateData.certifications.length), candidateData.certifications.length),
-      });
-
-      if (step >= steps) {
-        clearInterval(timer);
-      }
-    }, stepTime);
-
-    return () => clearInterval(timer);
-  }, []);
 
   const handleScrollTo = (id: string) => {
     const element = document.getElementById(id);
@@ -69,7 +45,7 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* Text content Column */}
-          <div className="lg:col-span-7 space-y-6 text-left">
+          <div className="lg:col-span-7 space-y-6 text-left order-2 lg:order-1">
             <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-brand-cyan/20 bg-brand-cyan/5 text-brand-cyan text-sm font-semibold tracking-wide uppercase animate-fade-in">
               <span className="w-2 h-2 rounded-full bg-brand-cyan animate-ping"></span>
               <span>Available for Hire</span>
@@ -117,78 +93,23 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Metric Dashboard Column */}
-          <div className="lg:col-span-5 flex justify-center">
-            <div className="glass-card w-full max-w-md rounded-2xl p-6 relative overflow-hidden shadow-xl border border-border bg-card-bg">
-              {/* Card top banner simulating Terminal header */}
-              <div className="flex items-center justify-between pb-4 mb-6 border-b border-border">
-                <div className="flex space-x-1.5">
-                  <span className="w-3 h-3 rounded-full bg-red-500/70"></span>
-                  <span className="w-3 h-3 rounded-full bg-yellow-500/70"></span>
-                  <span className="w-3 h-3 rounded-full bg-green-500/70"></span>
-                </div>
-                <div className="flex items-center space-x-1 text-xs text-muted-foreground font-mono">
-                  <Terminal className="w-3 h-3 text-brand-cyan" />
-                  <span>analyst_dashboard.py</span>
-                </div>
-              </div>
-
-              {/* KPI metrics */}
-              <div className="grid grid-cols-3 gap-4 mb-6 text-center">
-                <div className="p-3.5 rounded-xl bg-muted/30 border border-border/50">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-foreground tabular-nums">
-                    {metrics.projects}
-                  </p>
-                  <p className="text-xs text-muted-foreground font-semibold mt-1">Projects</p>
-                </div>
-                
-                <div className="p-3.5 rounded-xl bg-muted/30 border border-border/50">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-foreground tabular-nums">
-                    {metrics.internships}
-                  </p>
-                  <p className="text-xs text-muted-foreground font-semibold mt-1">Internship</p>
-                </div>
-
-                <div className="p-3.5 rounded-xl bg-muted/30 border border-border/50">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-foreground tabular-nums">
-                    {metrics.certifications}
-                  </p>
-                  <p className="text-xs text-muted-foreground font-semibold mt-1">Certifications</p>
-                </div>
-              </div>
-
-              {/* Fake visual Chart (SVG) */}
-              <div className="space-y-4">
-                <p className="text-xs font-semibold text-muted-foreground font-mono uppercase tracking-wider">
-                  Performance Metrics (Sales / Retention Trend)
-                </p>
-                
-                <div className="h-32 w-full bg-muted/10 rounded-lg p-2 border border-border/40 relative flex items-end">
-                  <svg className="w-full h-full text-brand-cyan" viewBox="0 0 100 40" preserveAspectRatio="none">
-                    <path
-                      d="M0 35 Q10 20, 20 28 T40 15 T60 22 T80 8 T100 5 L100 40 L0 40 Z"
-                      fill="url(#chartGrad)"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                    />
-                    <defs>
-                      <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="currentColor" stopOpacity="0.25" />
-                        <stop offset="100%" stopColor="currentColor" stopOpacity="0.0" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  {/* Faint overlay gridlines */}
-                  <div className="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-20 px-2 py-4">
-                    <div className="border-b border-muted-foreground/40 w-full"></div>
-                    <div className="border-b border-muted-foreground/40 w-full"></div>
-                    <div className="border-b border-muted-foreground/40 w-full"></div>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between text-xs text-muted-foreground font-mono">
-                  <span>SQL & Python Integration</span>
-                  <span className="text-brand-cyan font-bold">Lighthouse Safe 100%</span>
+          {/* Profile Photo Column */}
+          <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
+            <div className="relative group">
+              {/* Subtle cyan glow behind the card */}
+              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-r from-brand-cyan/20 to-brand-cyan-dark/10 opacity-35 blur-xl group-hover:opacity-60 transition duration-500 z-0"></div>
+              
+              {/* Main Photo Frame */}
+              <div className="relative glass-card p-2.5 rounded-2xl overflow-hidden shadow-2xl border border-border bg-card-bg/50 max-w-[280px] sm:max-w-[320px] md:max-w-[340px] z-10 transition-all duration-300">
+                <div className="relative rounded-xl overflow-hidden bg-muted/20">
+                  <Image
+                    src="/assets/profile.jpg"
+                    width={792}
+                    height={1024}
+                    alt="Elamathi N - Data Analyst"
+                    priority
+                    className="w-full h-auto object-cover transition duration-700 group-hover:scale-[1.02]"
+                  />
                 </div>
               </div>
             </div>
@@ -199,3 +120,5 @@ export default function Hero() {
     </section>
   );
 }
+
+// Padding refined
