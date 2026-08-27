@@ -1,0 +1,1 @@
+2026-05-01T09:00:00 - fix: correct navigation scroll spy offset
