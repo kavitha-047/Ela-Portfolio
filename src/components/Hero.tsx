@@ -122,3 +122,5 @@ export default function Hero() {
 }
 
 // Padding refined
+
+// Padding refined
