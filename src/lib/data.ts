@@ -131,6 +131,23 @@ export const candidateData: CandidateData = {
         "Managing data anomalies: Handled duplicate app entries and parsed non-standard install numbers (e.g., '10,000+') into numeric values using SQL ETL procedures."
       ],
       thumbnail: "/assets/projects/google_app_store.svg"
+    },
+    {
+      title: "Global Superstore Sales & Profit Performance",
+      category: "Dashboard Projects",
+      description: "An interactive Power BI performance dashboard analyzing $2.05M in global sales, $246.45K in profit, and 30K items sold across 7 market regions, evaluating category margins, shipping efficiency, and customer segments.",
+      tech: ["Power BI", "DAX", "Data Modeling", "Power Query", "ETL"],
+      githubLink: "REPLACE_WITH_REPO_URL",
+      liveDemoLink: null,
+      insights: [
+        "Technology generated the highest profitability ($120K), while Furniture faced thin margins with Tables resulting in net losses.",
+        "APAC emerged as the leading regional market contributing ~28.4% of total sales volume ($582K), followed by LATAM and US.",
+        "Consumer segment drove majority of sales volume at 51.51% ($1.05M), while Corporate and Home Office comprised 30.1% and 18.38% respectively."
+      ],
+      challenges: [
+        "Multi-Region Data Transformation & Dynamic DAX: Unified multi-year global sales transactions (2011–2014) across 7 distinct markets and created DAX measures for profit margin tracking and order priority analysis."
+      ],
+      thumbnail: "/assets/projects/global_superstore.svg"
     }
   ],
   certifications: [
